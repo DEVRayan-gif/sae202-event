@@ -1,3 +1,3 @@
 <?php
-require_once('conf/routeur.php');
+require_once('/var/www/sae202-event/conf/routeur.php');
 ?>

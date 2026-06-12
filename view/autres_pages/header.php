@@ -1,8 +1,45 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="/view/css/sae202_styles.css" type="text/css" rel="stylesheet" />
-</head>
-<body>
+<nav>
+    <a href="/accueil" class="nav-logo"> <img src="/view/images/OMNI_moyen_rouge-blanc.svg" alt="OMNI" height="40"> </a>
+    <ul class="nav-links">
+        <li><a href="/accueil">Accueil</a></li>
+        <li><a href="/concept">Concept</a></li>
+        <li><a href="/info_pratique">Infos pratiques</a></li>
+        <li><a href="/connexion">Connexion</a></li>
+    </ul>
+ <div class="nav-right">
+    <a href="/reservation" class="nav-cta">Réservez</a>
+    
+    <?php if (isset($_SESSION['user_id'])) : ?>
+        <!-- Connecté → menu déroulant -->
+        <div class="nav-profil-wrapper">
+            <img src="/view/images/profil_2.svg" alt="Profil" height="40" id="profil-btn">
+            <div class="profil-menu" id="profil-menu">
+                <a href="/profil">Mon profil</a>
+                <a href="/equipe">Mon équipe</a>
+                <a href="/deconnexion">Déconnexion</a>
+            </div>
+        </div>
+    <?php else : ?>
+        <!-- Non connecté → icône de base -->
+        <a href="/connexion" class="nav-profil">
+            <img src="/view/images/svg_profil.svg" alt="Profil" height="40">
+        </a>
+    <?php endif; ?>
+</div>
+</nav>
+
+<script>
+    const profilBtn = document.getElementById('profil-btn');
+const profilMenu = document.getElementById('profil-menu');
+
+profilBtn.addEventListener('click', () => {
+    profilMenu.classList.toggle('open');
+});
+
+// Fermer si on clique ailleurs
+document.addEventListener('click', (e) => {
+    if (!profilBtn.contains(e.target) && !profilMenu.contains(e.target)) {
+        profilMenu.classList.remove('open');
+    }
+});
+</script>

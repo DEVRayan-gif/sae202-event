@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Zone protégée"
+AuthUserFile /home/mmi25h02/htpassword.mmi
+Require valid-user
